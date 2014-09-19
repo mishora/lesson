@@ -1,0 +1,8 @@
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+Thumbs.db
+.buildpath
+.project
+laravel_helper.php

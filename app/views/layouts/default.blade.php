@@ -7,9 +7,12 @@
 </head>
 <body>
 
+@include('layouts.partials.nav')
+
 	<div class="container">
 		@yield('content')
 	</div>
+
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>

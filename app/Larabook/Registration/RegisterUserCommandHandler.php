@@ -3,10 +3,15 @@
 use Laracasts\Commander\CommandHandler;
 use Larabook\Users\User;
 use Larabook\Users\UserRepository;
+use Laracasts\Commander\Events\DispatchableTrait;
 
 class RegisterUserCommandHandler implements CommandHandler
 {
+	use DispatchableTrait;
 
+	/**
+	 * @var UserRepository
+	 */
 	protected $repository;
 
 	function __construct(UserRepository $repository)
@@ -27,6 +32,8 @@ class RegisterUserCommandHandler implements CommandHandler
 		);
 
 		$this->repository->save($user);
+
+		$this->dispatchEventsFor($user);
 
 		return $user;
 	}

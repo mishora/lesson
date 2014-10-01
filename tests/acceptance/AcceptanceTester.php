@@ -19,7 +19,7 @@ use Codeception\Module\AcceptanceHelper;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method void haveFriend($name)
+ * @method void haveFriend($name, $actorClass = null)
 */
 class AcceptanceTester extends \Codeception\Actor
 {
@@ -118,6 +118,14 @@ class AcceptanceTester extends \Codeception\Actor
      * $I->amOnPage('/');
      * // opens /register page
      * $I->amOnPage('/register');
+     * ?>
+     * ```
+     *
+     * Unless you are using one of framework modules, absolute URL can be specified as well:
+     *
+     * ``` php
+     * <?php
+     * $I->amOnPage('http://codeception.com');
      * ?>
      * ```
      *

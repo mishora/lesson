@@ -40,4 +40,13 @@ Route::get('logout', [
 /**
  * Statuses
  */
-Route::get('statuses', 'StatusController@index');
+Route::get('statuses', [
+	'as' => 'statuses_path',
+	'uses' => 'StatusesController@index'
+]);
+
+Route::post('statuses', [
+	'as' => 'statuses_path',
+	'uses' => 'StatusesController@store'
+]);
+

@@ -6,7 +6,7 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Larabook\Registration\Events\UserRegistered;
 use Laracasts\Commander\Events\EventGenerator;
-use Eloquent, Hash;
+use Eloquent, Hash, Log;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
@@ -45,11 +45,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	/**
-	 * undocumented function
+	 * Get satatuses for current user
 	 *
-	 * @return void
-	 * @author
-	 **/
+	 * @return mixed
+	 */
+	public function statuses()
+	{
+		return $this->hasMany('Larabook\Statuses\Status');
+	}
 
 	/**
 	 * Register a new user

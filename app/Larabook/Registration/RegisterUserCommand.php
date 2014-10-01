@@ -13,3 +13,4 @@ class RegisterUserCommand
 		$this->password = $password;
 	}
 }
+

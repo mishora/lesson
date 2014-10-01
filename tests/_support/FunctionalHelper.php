@@ -26,6 +26,20 @@ class FunctionalHelper extends \Codeception\Module
 		$I->click('Sign In');
 	}
 
+	public function postAStatus($body)
+	{
+		$I = $this->getModule('Laravel4');
+
+		$I->fillField('Status:', $body);
+		$I->click('Post Status');
+
+		// return $this->have('Larabook\Statuses\Status', compact($body));
+	}
+
+	public function have($model, $overrides = [])
+	{
+		return TestDummy::create($model, $overrides);
+	}
 
 	/**
 	 * Have an account function
@@ -34,7 +48,7 @@ class FunctionalHelper extends \Codeception\Module
 	 */
 	public function haveAnAccount($overrides = [])
 	{
-		TestDummy::create('Larabook\Users\User', $overrides);
+		return $this->have('Larabook\Users\User', $overrides);
 	}
 }
 

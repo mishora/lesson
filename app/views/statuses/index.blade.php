@@ -1,29 +1,28 @@
 @extends('layouts.default')
 
 @section('content')
-	<h1>Post a Status</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		@include('layouts.partials.errors')
 
-	@include('layouts.partials.errors')
+		<div class="status-post">
+			{{ Form::open(['route' => 'statuses_path']) }}
+				<!-- Ststus Form Input -->
+				<div class="form-group">
+					{{ Form::textarea('body', null, ['class' => 'form-control', 'rows' => 3, 'placeholder' => "What's on your mind?"]) }}
+				</div>
 
-	{{ Form::open(['route' => 'statuses_path']) }}
-		<!-- Ststus Form Input -->
-		<div class="form-group">
-			{{ Form::label('body', 'Status:') }}
-			{{ Form::textarea('body', null, ['class' => 'form-control']) }}
+				<div class="form-group status-post-submit">
+					{{ Form::submit('Post Status', ['class' => 'btn btn-default btn-xs']) }}
+				</div>
+			{{ Form::close() }}
 		</div>
 
-		<div class="form-group">
-			{{ Form::submit('Post Status', ['class' => 'btn btn-primary']) }}
-		</div>
-	{{ Form::close() }}
+		@foreach ($statuses as $status)
+			@include('statuses.partials.status')
+		@endforeach
 
-	<h2>Statuses</h2>
-<?php
-?>
-	@foreach ($statuses as $status)
-		<article>
-			{{ $status->body }}
-		</article>
-	@endforeach
+	</div>
+</div>
 @stop
 

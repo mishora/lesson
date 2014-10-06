@@ -3,6 +3,7 @@
 use Laracasts\TestDummy\Factory as TestDummy;
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
+use Log;
 
 class FunctionalHelper extends \Codeception\Module
 {

@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder {
 		]);
 
 		// Create Random Users
-		foreach(range(1, 50) as $index)
+		foreach(range(2, 50) as $index)
 		{
 			User::create([
 				'username' => $faker->word . $index,

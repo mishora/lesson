@@ -1,14 +1,11 @@
 <?php
 
-use Larabook\Core\CommandBus;
 use Larabook\Statuses\PublishStatusCommand;
 use Larabook\Statuses\StatusRepository;
 use Larabook\Forms\PublishStatusForm;
 Use Larabook\Users\User;
 
 class StatusesController extends \BaseController {
-
-	use CommandBus;
 
 	/**
 	 * @var StatusRepository
@@ -62,10 +59,12 @@ class StatusesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$this->publishStatusForm->validate(Input::only('body'));
-		$this->execute(
-				new PublishStatusCommand(Input::get('body'), Auth::user()->id)
-		);
+		$input = Input::get();
+		$input['userId'] = Auth::id();
+
+		$this->publishStatusForm->validate($input);
+
+		$this->execute(PublishStatusCommand::class, $input);
 
 		Flash::message('Your status has been updated');
 		return Redirect::back();

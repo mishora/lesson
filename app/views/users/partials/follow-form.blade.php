@@ -1,6 +1,11 @@
 @if ($user->isFollowedBy($me))
 
-	<p>You are following {{ $user->username }}.</p>
+	{{ Form::Open(['method' => 'DELETE', 'route' => ['follow_path', $user->id]]) }}
+
+		{{ Form::hidden('userIdToUnfollow', $user->id) }}
+		<button type="submit" class="btn btn-danger">Unfollow {{ $user->username }}</button>
+
+	{{ Form::close() }}
 
 @else
 

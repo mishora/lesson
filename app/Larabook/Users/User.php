@@ -7,11 +7,13 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 use Larabook\Registration\Events\UserRegistered;
 use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\PresentableTrait;
+// use Larabook\Users\FollowableTrait;
 use Eloquent, Hash, Log;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait, EventGenerator, PresentableTrait;
+	use FollowableTrait;
 
 	/**
 	 * Path to the presenter for a usser
@@ -86,33 +88,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function is($user)
 	{
-		if (is_null($user)) return flase;
+		if (is_null($user)) return false;
 
 		return $this->username == $user->username;
-	}
-
-	/**
-	 * Make a follow user relationship
-	 *
-	 */
-	public function follows()
-	{
-		return $this->belongsToMany(self::class,
-				 'follows', 'follower_id', 'followed_id')->withTimestamps();
-	}
-
-
-	/**
-	 * Determine if current user follows another user.
-	 *
-	 * @param User $otherUser
-	 * @return bool
-	 */
-	public function isFollowedBy(User $otherUser)
-	{
-		$idsWhoOtherUserFollows = $otherUser->follows()->lists('followed_id');
-
-		return in_array($this->id, $idsWhoOtherUserFollows);
 	}
 
 }

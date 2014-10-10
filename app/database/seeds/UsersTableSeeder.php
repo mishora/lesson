@@ -9,15 +9,8 @@ class UsersTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		// Create default User
-		User::create([
-				'username' => 'mishora',
-				'email' => 'mishoria@gmail.com',
-				'password' => '123456'
-		]);
-
 		// Create Random Users
-		foreach(range(2, 50) as $index)
+		foreach(range(1, 50) as $index)
 		{
 			User::create([
 				'username' => $faker->word . $index,

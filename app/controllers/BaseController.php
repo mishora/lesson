@@ -19,6 +19,7 @@ class BaseController extends Controller {
 		}
 
 		View::share('me', Auth::user());
+		View::share('signedIn', Auth::user());
 	}
 
 }

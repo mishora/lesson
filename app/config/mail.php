@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'log',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,8 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'mishoria@gmail.com',
+						 'name' => 'Mihail Kovachev'),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -4,5 +4,9 @@ composer.phar
 composer.lock
 .DS_Store
 Thumbs.db
-
+.idea/
+.buildpath
+.project
+.settings/
+laravel_helper.php
 tests/_output/*

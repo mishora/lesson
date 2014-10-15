@@ -8,29 +8,28 @@
     border: none; }
     .status-post textarea:focus {
       box-shadow: none; }
-
-.status-post-submit {
-  border-top: 1px solid #e9e9e9;
-  padding: 0.5em 1em;
-  margin-bottom: 0px;
-  overflow: hidden;
-  background-color: #fdfcfc; }
-  .status-post-submit .btn {
-    float: right;
-    background-color: #2eb1bc;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-family: helvetica; }
-    .status-post-submit .btn:hover {
-      background-color: #2790b1; }
+  .status-post .status-post-submit {
+    border-top: 1px solid #e9e9e9;
+    padding: 0.5em 1em;
+    margin-bottom: 0px;
+    overflow: hidden;
+    background-color: #fdfcfc; }
+    .status-post .status-post-submit .btn {
+      float: right;
+      background-color: #2eb1bc;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: helvetica; }
+      .status-post .status-post-submit .btn:hover {
+        background-color: #2790b1; }
 
 /* Each individual status */
 .status-media {
   border: 1px solid #e3e3e3;
   background: white;
   padding: 1em;
-  margin-bottom: 2em; }
+  border-bottom: none; }
 
 .status-media-heading {
   color: #409dd1;
@@ -53,6 +52,20 @@ status-media-time {
   font-size: 0.7em;
   letter-spacing: 0.15em;
   color: #ccd0d3; }
+
+.comments__create-form textarea {
+  border: 1px solid #e3e3e3;
+  border-top: none;
+  border-radius: 0; }
+
+.comments {
+  margin-bottom: 5em; }
+
+.comments__comment {
+  background: #e6e6e6;
+  margin-top: 0;
+  border: 1px solid #d9d9d9;
+  border-bottom: 1px solid #e3e3e3; }
 
 .btn-primary {
   background: #00BAE9;

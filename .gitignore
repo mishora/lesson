@@ -8,3 +8,4 @@ Thumbs.db
 laravel_helper.php
 /nbproject/private/
 /nbproject/
+.env.*.php

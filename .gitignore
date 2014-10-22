@@ -6,3 +6,5 @@ Thumbs.db
 .buildpath
 .project
 laravel_helper.php
+/nbproject/private/
+/nbproject/

@@ -20,3 +20,5 @@ $I->see('Welcome to GETIX');
 $I->seeRecord('users', [
 	'username' => 'JohnDoe'
 ]);
+
+$I->assertTrue(Auth::check());

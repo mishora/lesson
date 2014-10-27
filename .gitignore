@@ -9,3 +9,4 @@ laravel_helper.php
 /nbproject/private/
 /nbproject/
 .env.*.php
+/node_modules/

@@ -10,3 +10,4 @@ laravel_helper.php
 /nbproject/
 .env.*.php
 /node_modules/
+tests/_output/*

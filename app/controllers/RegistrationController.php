@@ -39,6 +39,8 @@ class RegistrationController extends BaseController
 
 		Auth::login($user);
 
+		Flash::overlay('Glad to have you as a new GETIX member!');
+
 		return Redirect::home();
 	}
 }

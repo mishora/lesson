@@ -1,8 +1,12 @@
 <?php
 
 use Larabook\Forms\RegistrationForm;
+use Larabook\Registration\RegisterUserCommand;
+use Larabook\Core\CommandBus;
 
-class RegistrationController extends BaseController {
+class RegistrationController extends BaseController
+{
+	use CommandBus;
 
 	/**
 	 * var RegistrationFotm
@@ -26,8 +30,11 @@ class RegistrationController extends BaseController {
 	public function store()
 	{
 		$this->registrationForm->validate(Input::all());
-		$user = User::create(
-			Input::only('username', 'email', 'password')
+
+		extract(Input::only('username', 'email', 'password'));
+
+		$user = $this->execute(
+				new RegisterUserCommand($username, $email, $password)
 		);
 
 		Auth::login($user);

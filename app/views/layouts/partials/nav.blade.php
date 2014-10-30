@@ -16,29 +16,27 @@
 				<li><a href="#">Link</a></li>
 			</ul>
 
-				<ul class="nav navbar-nav navbar-right">
-					@if ($currentUser)
-						<li class="dropdown">
+			<ul class="nav navbar-nav navbar-right">
+				@if ($currentUser)
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img class="nav-gravatar" src="{{ $currentUser->present()->gravatar }}">
 
-
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img class="nav-gravatar" src="{{ $currentUser->present()->gravatar }}">
-
-								{{ $currentUser->username }} <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li>{{ link_to_route('logout_path', 'Log Out') }}</li>
-							</ul>
-						</li>
-					@else
-						<li>{{ link_to_route('register_path', 'Register') }}</li>
-						<li>{{ link_to_route('login_path', 'Log In') }}</li>
-					@endif
-				</ul>
+							{{ $currentUser->username }} <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li>{{ link_to_route('logout_path', 'Log Out') }}</li>
+						</ul>
+					</li>
+				@else
+					<li>{{ link_to_route('register_path', 'Register') }}</li>
+					<li>{{ link_to_route('login_path', 'Log In') }}</li>
+				@endif
+			</ul>
 		</div>
 	</div>
 </nav>

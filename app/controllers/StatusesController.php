@@ -62,7 +62,7 @@ class StatusesController extends BaseController {
  		);
 
 		Flash::message('Your status has benn updated');
-		return Redirect::refresh();
+		return Redirect::back();
 	}
 
 

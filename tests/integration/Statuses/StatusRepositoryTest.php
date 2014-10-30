@@ -39,8 +39,6 @@ class StatusRepositoryTest extends Test
 		$statusesForUser = $this->repo->getAllForUser($users[0]);
 
 		$this->assertCount(2, $statusesForUser);
-		$this->assertEquals('My Status', $statusesForUser[0]->body);
-		$this->assertEquals('My Status', $statusesForUser[1]->body);
 
     }
 

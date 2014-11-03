@@ -1,6 +1,5 @@
 <?php
 
-use Laracasts\Commander\CommanderTrait;
 use Larabook\Forms\PublishStatusForm;
 use Larabook\Statuses\PublishStatusCommand;
 use Larabook\Statuses\StatusRepository;
@@ -30,7 +29,7 @@ class StatusesController extends BaseController {
 	 */
 	public function index()
 	{
-		$statuses = $this->statusRepository->getAllForUser(Auth::user());
+		$statuses = $this->statusRepository->getFeedForUser(Auth::user());
 
 		return View::make('statuses.index', compact('statuses'));
 	}

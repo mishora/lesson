@@ -7,12 +7,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home') }}">GETIX</a>
+			<a class="navbar-brand" href="{{ Auth::check() ? route('statuses_path') : route('home') }}">GETIX</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active">{{ link_to_route('users_path', 'Brouse Users	') }}</li>
+				<li class="active">{{ link_to_route('users_path', 'Browse Users') }}</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">

@@ -24,4 +24,19 @@ class StatusRepository
 					->save($status);
 	}
 
+	/**
+	 * @desc Get the feed for a User.
+	 *
+	 * @param User $user
+	 * @return type
+	 */
+	public function getFeedForUser(User $user)
+	{
+		$userIds = $user->follows()->lists('followed_id');
+
+		$userIds[] = $user->id;
+
+		return Status::whereIn('user_id', $userIds)->latest()->get();
+	}
+
 }

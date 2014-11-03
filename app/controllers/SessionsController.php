@@ -38,10 +38,14 @@ class SessionsController extends BaseController
 
 		$this->signInForm->validate($formData);
 
-		if (Auth::attempt($formData)) {
-			Flash::message('Welcome back!');
-			return Redirect::intended('/statuses');
+		if (! Auth::attempt($formData)) {
+			Flash::message('We were unable to sign you in. Please check your'
+					. ' credentials and try again!');
+			return Redirect::back()->withInput();
 		}
+
+		Flash::message('Welcome back!');
+		return Redirect::intended('/statuses');
 	}
 
 /**

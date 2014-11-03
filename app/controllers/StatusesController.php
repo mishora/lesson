@@ -1,6 +1,6 @@
 <?php
 
-use Larabook\Core\CommandBus;
+use Laracasts\Commander\CommanderTrait;
 use Larabook\Forms\PublishStatusForm;
 use Larabook\Statuses\PublishStatusCommand;
 use Larabook\Statuses\StatusRepository;
@@ -17,8 +17,6 @@ class StatusesController extends BaseController {
 	 * @var StatusRepository
 	 */
 	protected $statusRepository;
-
-	use CommandBus;
 
 	public function __construct(PublishStatusForm $publishStatusForm, StatusRepository $statusRepository) {
 		$this->statusRepository = $statusRepository;
@@ -56,10 +54,12 @@ class StatusesController extends BaseController {
 	 */
 	public function store()
 	{
-		$this->publishStatusForm->validate(Input::only('body'));
-		$this->execute(
-			new PublishStatusCommand(Input::get('body'), Auth::user()->id)
- 		);
+		$input = Input::all();
+		$input['userId'] = Auth::id();
+
+		$this->publishStatusForm->validate($input);
+
+		$this->execute(PublishStatusCommand::class, $input);
 
 		Flash::message('Your status has benn updated');
 		return Redirect::back();

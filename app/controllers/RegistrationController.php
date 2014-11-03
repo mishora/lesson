@@ -2,11 +2,10 @@
 
 use Larabook\Forms\RegistrationForm;
 use Larabook\Registration\RegisterUserCommand;
-use Larabook\Core\CommandBus;
+use Laracasts\Flash\Flash;
 
 class RegistrationController extends BaseController
 {
-	use CommandBus;
 
 	/**
 	 * var RegistrationFotm
@@ -33,11 +32,7 @@ class RegistrationController extends BaseController
 	{
 		$this->registrationForm->validate(Input::all());
 
-		extract(Input::only('username', 'email', 'password'));
-
-		$user = $this->execute(
-				new RegisterUserCommand($username, $email, $password)
-		);
+		$user = $this->execute(RegisterUserCommand::class);
 
 		Auth::login($user);
 

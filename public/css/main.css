@@ -1,16 +1,3 @@
-body {
-  padding: 70px; }
-
-.container h1:first-of-type {
-  margin-top: 0px; }
-
-.nav-gravatar {
-  float: left;
-  position: relative;
-  top: -6px;
-  left: -8px;
-  border: 1px solid #555; }
-
 .status-post {
   border: 1px solid #e3e3e3;
   background: white;
@@ -34,6 +21,17 @@ body {
   padding: 1em;
   margin-bottom: 2em; }
 
+.btn-primary {
+  background: #00BAE9;
+  border: 1px solid #0091b6; }
+
+.nav-gravatar {
+  float: left;
+  position: relative;
+  top: -6px;
+  left: -8px;
+  border: 1px solid #555; }
+
 .users {
   margin-bottom: 3em; }
 
@@ -41,3 +39,9 @@ body {
   text-align: center; }
   .user-block .avatar {
     margin: auto; }
+
+body {
+  padding: 70px; }
+
+.container h1:first-of-type {
+  margin-top: 0px; }

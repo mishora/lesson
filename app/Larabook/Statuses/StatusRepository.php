@@ -36,7 +36,23 @@ class StatusRepository
 
 		$userIds[] = $user->id;
 
-		return Status::whereIn('user_id', $userIds)->latest()->get();
+		return Status::with('comments')->whereIn('user_id', $userIds)->latest()->get();
+	}
+
+	/**
+	 *
+	 *
+	 * @param type $userId
+	 * @param type $statusId
+	 * @param type $body
+	 */
+	public function leaveComment($userId, $statusId, $body)
+	{
+		$comment = Comment::leave($body, $statusId);
+
+		User::findOrFail($userId)->comments()->save($comment);
+
+		return $comment;
 	}
 
 }
